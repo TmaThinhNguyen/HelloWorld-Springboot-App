@@ -6,19 +6,9 @@ pipeline{
                 git credentialsId: '17d3763d-0b59-4cdc-b4e2-33ceecd010fc', url: 'git@github.com:TmaThinhNguyen/HelloWorld-Springboot-App.git'
             }
         }
-        stage('Maven Test'){
+        stage('Create Dockerimage '){
             steps{
-               bat 'mvn test'
-            }
-        }
-        stage('Maven Build'){
-            steps{
-               bat 'mvn package' 
-            }
-        }
-        stage('Maven Deploy'){
-            steps{
-                echo "Deploying the war file to the server..."
+               bat 'docker build -t thetip4yopu/springboot:latest .'
             }
         }
     }
