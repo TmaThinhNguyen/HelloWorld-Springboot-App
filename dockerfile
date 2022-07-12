@@ -1,4 +1,4 @@
 FROM openjdk:8-jdk-alpine
-COPY ./target/helloworld-0.0.1.war /usr/app/
-WORKDIR /usr/app
+MAINTAINER baeldung.com
+COPY target/docker-message-server-1.0.0.jar message-server-1.0.0.jar
 ENTRYPOINT ["java","-jar","helloworld-0.0.1.war"]
