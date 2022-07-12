@@ -3,20 +3,23 @@ pipeline{
     stages{
         stage('Git clone'){
             steps{
-                git 'https://github.com/shazforiot/HelloWorld-Springboot-App.git'
+                git credentialsId: '17d3763d-0b59-4cdc-b4e2-33ceecd010fc', url: 'git@github.com:TmaThinhNguyen/HelloWorld-Springboot-App.git'
             }
         }
-        
-        stage('maven build'){
+        stage('Maven Test'){
             steps{
-                sh 'mvn package'
+               bat 'mvn test'
             }
         }
-        stage('Create Dockerimage'){
+        stage('Maven Build'){
             steps{
-                sh 'docker build -t thetips4you/springboot:latest .'
+               bat 'mvn package' 
             }
         }
-        
+        stage('Maven Deploy'){
+            steps{
+                echo "Deploying the war file to the server..."
+            }
+        }
     }
 }
