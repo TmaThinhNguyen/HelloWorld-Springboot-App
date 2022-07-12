@@ -1,4 +1,5 @@
 FROM openjdk:8-jdk-alpine
 WORKDIR /app
-COPY ./target/helloworld-0.0.1.war helloworld-0.0.1.jar
-ENTRYPOINT ["java","-jar","helloworld-0.0.1.war"]
+ARG JAR_FILE=target/helloworld-0.0.1.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
